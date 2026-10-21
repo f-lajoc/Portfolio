@@ -1,0 +1,1128 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bolaji Funmilola — Frontend Developer & Technical Writer</title>
+		<meta
+			name="description"
+			content="Bolaji Funmilola is a frontend developer and technical writer based in Ibadan, Nigeria. Available for remote work." />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Figtree:wght@400;500;600&display=swap"
+			rel="stylesheet" />
+		<style>
+			:root {
+				--petal: #fff4f7;
+				--blush: #f8cadb;
+				--rose: #e0709b;
+				--orchid: #a93f86;
+				--plum: #3a1b3f;
+				--lilac: #e6daf8;
+				--butter: #ffe9a6;
+				--white: #ffffff;
+				--serif: "Fraunces", Georgia, serif;
+				--sans: "Figtree", system-ui, sans-serif;
+			}
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+			html {
+				scroll-behavior: smooth;
+				scroll-padding-top: 84px;
+			}
+			body {
+				font-family: var(--sans);
+				background: var(--petal);
+				color: var(--plum);
+				line-height: 1.65;
+				font-size: 17px;
+				-webkit-font-smoothing: antialiased;
+			}
+			img {
+				max-width: 100%;
+				display: block;
+			}
+			a {
+				color: inherit;
+			}
+			:focus-visible {
+				outline: 3px solid var(--orchid);
+				outline-offset: 3px;
+				border-radius: 6px;
+			}
+			.wrap {
+				width: min(1120px, 92%);
+				margin-inline: auto;
+			}
+			h1,
+			h2,
+			h3 {
+				font-family: var(--serif);
+				font-weight: 400;
+				line-height: 1.12;
+				letter-spacing: -0.01em;
+			}
+			h1 {
+				font-size: clamp(2.5rem, 6vw, 4.6rem);
+			}
+			h2 {
+				font-size: clamp(2rem, 4.2vw, 3.1rem);
+			}
+			h3 {
+				font-size: 1.4rem;
+				font-weight: 600;
+			}
+			em {
+				font-style: italic;
+				color: var(--orchid);
+			}
+			p {
+				max-width: 62ch;
+			}
+
+			/* Header */
+			header {
+				position: sticky;
+				top: 0;
+				z-index: 20;
+				background: rgba(255, 244, 247, 0.88);
+				backdrop-filter: blur(10px);
+				border-bottom: 1px solid var(--blush);
+			}
+			.bar {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				height: 68px;
+			}
+			.logo {
+				font-family: var(--serif);
+				font-style: italic;
+				font-size: 1.6rem;
+				text-decoration: none;
+				color: var(--orchid);
+			}
+			nav ul {
+				display: flex;
+				gap: 1.8rem;
+				list-style: none;
+				align-items: center;
+			}
+			nav a {
+				text-decoration: none;
+				font-weight: 500;
+				font-size: 0.98rem;
+			}
+			nav a:hover {
+				color: var(--orchid);
+			}
+			.pill {
+				display: inline-block;
+				background: var(--plum);
+				color: var(--petal);
+				padding: 0.7rem 1.4rem;
+				border-radius: 999px;
+				font-weight: 600;
+				text-decoration: none;
+				transition: background 0.2s;
+			}
+			.pill:hover {
+				background: var(--orchid);
+				color: #fff;
+			}
+			.pill.ghost {
+				background: transparent;
+				color: var(--plum);
+				border: 1.5px solid var(--plum);
+			}
+			.pill.ghost:hover {
+				background: var(--plum);
+				color: var(--petal);
+			}
+			nav .pill {
+				padding: 0.5rem 1.1rem;
+				color: var(--petal);
+			}
+			.menu-btn {
+				display: none;
+				background: none;
+				border: 1.5px solid var(--plum);
+				border-radius: 999px;
+				padding: 0.4rem 1rem;
+				font: inherit;
+				font-weight: 600;
+				color: var(--plum);
+				cursor: pointer;
+			}
+
+			/* Hero */
+			.hero {
+				padding: 4.5rem 0 5rem;
+				position: relative;
+				overflow: hidden;
+			}
+			.hero-grid {
+				display: grid;
+				grid-template-columns: 1.15fr 0.85fr;
+				gap: 3rem;
+				align-items: center;
+			}
+			.hello {
+				display: inline-flex;
+				gap: 0.5rem;
+				align-items: center;
+				background: var(--lilac);
+				padding: 0.4rem 1rem;
+				border-radius: 999px;
+				font-weight: 500;
+				font-size: 0.95rem;
+				margin-bottom: 1.4rem;
+			}
+			.hero p.lead {
+				font-size: 1.2rem;
+				margin: 1.6rem 0 2rem;
+			}
+			.hero-actions {
+				display: flex;
+				gap: 0.9rem;
+				flex-wrap: wrap;
+			}
+
+			.portrait {
+				position: relative;
+				justify-self: center;
+				width: min(380px, 100%);
+			}
+			.arch {
+				aspect-ratio: 3/4;
+				border-radius: 999px 999px 28px 28px;
+				background: linear-gradient(160deg, var(--blush), var(--lilac));
+				overflow: hidden;
+				position: relative;
+				border: 6px solid var(--white);
+				box-shadow: 0 24px 50px -20px rgba(169, 63, 134, 0.45);
+			}
+			.arch img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				position: relative;
+				z-index: 1;
+			}
+			.arch .initials {
+				position: absolute;
+				inset: 0;
+				display: grid;
+				place-items: center;
+				font-family: var(--serif);
+				font-style: italic;
+				font-size: 5rem;
+				color: var(--orchid);
+				z-index: 0;
+			}
+			.halo {
+				position: absolute;
+				inset: -22px -22px auto auto;
+				width: 78%;
+				aspect-ratio: 3/4;
+				border: 2px dashed var(--rose);
+				border-radius: 999px 999px 28px 28px;
+				z-index: -1;
+				transform: rotate(6deg);
+			}
+			.badge {
+				position: absolute;
+				left: -34px;
+				bottom: 44px;
+				width: 128px;
+				height: 128px;
+				display: grid;
+				place-items: center;
+				text-align: center;
+				font-family: var(--serif);
+				font-style: italic;
+				font-size: 0.98rem;
+				line-height: 1.2;
+				color: var(--plum);
+				transform: rotate(-8deg);
+			}
+			.badge svg {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.badge span {
+				position: relative;
+				padding: 0 0.8rem;
+			}
+			.sparkle {
+				position: absolute;
+				color: var(--rose);
+				font-size: 1.8rem;
+			}
+			.s1 {
+				top: -14px;
+				left: 8%;
+			}
+			.s2 {
+				bottom: -12px;
+				right: 6%;
+				color: var(--orchid);
+				font-size: 1.3rem;
+			}
+
+			.stats {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.8rem;
+				margin-top: 2.6rem;
+			}
+			.stat {
+				background: var(--white);
+				border-radius: 999px;
+				padding: 0.7rem 1.4rem;
+				border: 1.5px solid var(--blush);
+				font-weight: 500;
+				font-size: 0.95rem;
+			}
+			.stat b {
+				font-family: var(--serif);
+				font-size: 1.4rem;
+				color: var(--orchid);
+				margin-right: 0.4rem;
+			}
+
+			/* Ticker */
+			.ticker {
+				background: var(--plum);
+				color: var(--blush);
+				overflow: hidden;
+				white-space: nowrap;
+				padding: 0.9rem 0;
+				font-family: var(--serif);
+				font-style: italic;
+				font-size: 1.25rem;
+			}
+			.ticker div {
+				display: inline-block;
+				padding-left: 100%;
+				animation: slide 32s linear infinite;
+			}
+			@keyframes slide {
+				to {
+					transform: translateX(-100%);
+				}
+			}
+
+			section {
+				padding: 5.5rem 0;
+			}
+			.head {
+				margin-bottom: 3rem;
+			}
+			.head p {
+				margin-top: 1rem;
+				font-size: 1.1rem;
+			}
+
+			/* Services */
+			.services {
+				background: var(--white);
+			}
+			.svc-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 1.6rem;
+			}
+			.svc {
+				padding: 2.4rem 1.8rem 2rem;
+				border-radius: 140px 140px 24px 24px;
+				background: var(--petal);
+				border: 1.5px solid var(--blush);
+				text-align: center;
+			}
+			.svc:nth-child(2) {
+				background: var(--lilac);
+				border-color: var(--lilac);
+			}
+			.svc:nth-child(3) {
+				background: var(--butter);
+				border-color: var(--butter);
+			}
+			.svc .icon {
+				font-size: 2rem;
+				margin-bottom: 1rem;
+			}
+			.svc p {
+				font-size: 0.98rem;
+				margin: 0.8rem auto 1.2rem;
+			}
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.45rem;
+				list-style: none;
+				justify-content: center;
+			}
+			.tags li {
+				background: rgba(255, 255, 255, 0.75);
+				border-radius: 999px;
+				padding: 0.25rem 0.8rem;
+				font-size: 0.85rem;
+				font-weight: 500;
+			}
+			.tags.left {
+				justify-content: flex-start;
+			}
+
+			/* Work */
+			.work-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1.6rem;
+			}
+			.card {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				text-decoration: none;
+				border-radius: 28px;
+				padding: 2rem;
+				min-height: 250px;
+				transition: transform 0.25s;
+			}
+			.card:hover {
+				transform: translateY(-6px) rotate(-0.4deg);
+			}
+			.card .kind {
+				font-weight: 600;
+				font-size: 0.95rem;
+			}
+			.card h3 {
+				font-size: 1.7rem;
+				margin: 0.6rem 0;
+			}
+			.card p {
+				font-size: 0.98rem;
+			}
+			.card .tags {
+				margin-top: 1rem;
+			}
+			.card .go {
+				font-weight: 600;
+				margin-top: 1.4rem;
+				text-decoration: underline;
+				text-underline-offset: 4px;
+			}
+			.feature {
+				grid-column: 1/-1;
+				background: var(--blush);
+				min-height: 300px;
+			}
+			.feature h3 {
+				font-size: 2.3rem;
+			}
+			.c2 {
+				background: var(--lilac);
+			}
+			.c3 {
+				background: var(--white);
+				border: 1.5px solid var(--blush);
+			}
+			.c4 {
+				background: var(--butter);
+			}
+			.c5 {
+				background: var(--white);
+				border: 1.5px solid var(--blush);
+			}
+			.sub {
+				margin: 4rem 0 1.6rem;
+			}
+
+			/* Experience */
+			.experience {
+				background: var(--plum);
+				color: var(--petal);
+			}
+			.experience em {
+				color: var(--blush);
+			}
+			.timeline {
+				list-style: none;
+				position: relative;
+				padding-left: 2rem;
+				border-left: 2px dashed var(--rose);
+				display: grid;
+				gap: 2.6rem;
+				max-width: 780px;
+			}
+			.timeline li {
+				position: relative;
+			}
+			.timeline li::before {
+				content: "";
+				position: absolute;
+				left: calc(-2rem - 8px);
+				top: 0.55rem;
+				width: 14px;
+				height: 14px;
+				border-radius: 50%;
+				background: var(--blush);
+				border: 3px solid var(--plum);
+				box-shadow: 0 0 0 2px var(--rose);
+			}
+			.when {
+				color: var(--blush);
+				font-weight: 500;
+				font-size: 0.95rem;
+			}
+			.timeline h3 {
+				margin: 0.2rem 0;
+			}
+			.where {
+				opacity: 0.85;
+				margin-bottom: 0.6rem;
+				font-style: italic;
+				font-family: var(--serif);
+			}
+			.timeline ul {
+				padding-left: 1.1rem;
+				display: grid;
+				gap: 0.4rem;
+				font-size: 0.98rem;
+			}
+
+			/* Skills */
+			.skills-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 2.2rem 2rem;
+			}
+			.skills-grid h3 {
+				margin-bottom: 1rem;
+			}
+			.edu {
+				margin-top: 3rem;
+				background: var(--white);
+				border: 1.5px solid var(--blush);
+				border-radius: 24px;
+				padding: 1.8rem 2rem;
+				max-width: 640px;
+			}
+			.edu h3 {
+				font-size: 1.25rem;
+			}
+
+			/* Contact */
+			.contact {
+				padding-top: 2rem;
+			}
+			.contact-box {
+				background: linear-gradient(135deg, var(--blush), var(--lilac));
+				border-radius: 48px;
+				padding: clamp(2.4rem, 6vw, 5rem);
+				text-align: center;
+			}
+			.contact-box p {
+				margin: 1.2rem auto 2rem;
+			}
+			.mail {
+				display: inline-block;
+				font-family: var(--serif);
+				font-style: italic;
+				font-size: clamp(1.2rem, 3.2vw, 2.2rem);
+				color: var(--plum);
+				text-decoration-thickness: 2px;
+				text-underline-offset: 6px;
+				word-break: break-all;
+			}
+			.links {
+				display: flex;
+				gap: 0.9rem;
+				justify-content: center;
+				margin-top: 1.8rem;
+				flex-wrap: wrap;
+			}
+			footer {
+				padding: 2.5rem 0;
+				text-align: center;
+				font-size: 0.92rem;
+			}
+
+			/* Responsive */
+			@media (max-width: 860px) {
+				.hero-grid,
+				.work-grid,
+				.svc-grid,
+				.skills-grid {
+					grid-template-columns: 1fr;
+				}
+				.feature {
+					grid-column: auto;
+				}
+				.menu-btn {
+					display: block;
+				}
+				nav ul {
+					position: absolute;
+					top: 68px;
+					left: 0;
+					right: 0;
+					background: var(--petal);
+					flex-direction: column;
+					padding: 1.4rem 0 1.8rem;
+					gap: 1.2rem;
+					border-bottom: 1px solid var(--blush);
+					display: none;
+				}
+				nav ul.open {
+					display: flex;
+				}
+				.portrait {
+					order: -1;
+					width: min(300px, 80%);
+				}
+				.badge {
+					left: -18px;
+					width: 108px;
+					height: 108px;
+					font-size: 0.85rem;
+				}
+				.hero {
+					padding-top: 2.5rem;
+				}
+			}
+			@media (prefers-reduced-motion: reduce) {
+				html {
+					scroll-behavior: auto;
+				}
+				.ticker div {
+					animation: none;
+					padding-left: 0;
+				}
+				.card {
+					transition: none;
+				}
+			}
+		</style>
+	</head>
+	<body id="top">
+		<header>
+			<div class="wrap bar">
+				<a href="#top" class="logo">Funmilola.</a>
+				<button class="menu-btn" aria-expanded="false" aria-controls="menu">
+					Menu
+				</button>
+				<nav aria-label="Main">
+					<ul id="menu">
+						<li><a href="#services">Services</a></li>
+						<li><a href="#work">Work</a></li>
+						<li><a href="#experience">Experience</a></li>
+						<li><a href="#skills">Skills</a></li>
+						<li><a class="pill" href="#contact">Hire me</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<!-- HERO -->
+			<div class="hero">
+				<div class="wrap hero-grid">
+					<div>
+						<span class="hello">🌸 Hello, I’m Bolaji Funmilola</span>
+						<h1>
+							I build pretty websites and write docs that <em>make sense.</em>
+						</h1>
+						<p class="lead">
+							A frontend developer and technical writer based in Ibadan,
+							Nigeria, working remotely. I build responsive, mobile-first web
+							apps and turn complex products into clear guides that people can
+							actually follow.
+						</p>
+						<div class="hero-actions">
+							<a class="pill" href="#work">See my work</a>
+							<a class="pill ghost" href="mailto:bolajifisayo80@gmail.com"
+								>Say hello</a
+							>
+						</div>
+						<div class="stats">
+							<div class="stat"><b>2+</b>years building</div>
+							<div class="stat"><b>2</b>published articles</div>
+							<div class="stat"><b>5</b>projects</div>
+						</div>
+					</div>
+
+					<div class="portrait">
+						<div class="halo" aria-hidden="true"></div>
+						<span class="sparkle s1" aria-hidden="true">✦</span>
+						<div class="arch">
+							<div class="initials" aria-hidden="true">BF</div>
+							<!-- Put your photo in the same folder and name it photo.jpg -->
+							<img
+								src="photo.jpg"
+								alt="Portrait of Bolaji Funmilola"
+								onerror="this.style.display = 'none'" />
+						</div>
+						<div class="badge">
+							<svg viewBox="0 0 100 100" aria-hidden="true">
+								<path
+									fill="#FFE9A6"
+									d="M50 2l9 7 11-3 6 10 12 1 2 12 10 6-3 11 7 9-7 9 3 11-10 6-2 12-12 1-6 10-11-3-9 7-9-7-11 3-6-10-12-1-2-12-10-6 3-11-7-9 7-9-3-11 10-6 2-12 12-1 6-10 11 3z" />
+							</svg>
+							<span>Open to remote work</span>
+						</div>
+						<span class="sparkle s2" aria-hidden="true">✦</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="ticker" aria-hidden="true">
+				<div>
+					HTML5 ✿ CSS3 ✿ JavaScript ✿ React ✿ Tailwind CSS ✿ Bootstrap ✿
+					Technical Writing ✿ Documentation ✿ Figma ✿ Git ✿ HTML5 ✿ CSS3 ✿
+					JavaScript ✿ React ✿ Tailwind CSS ✿ Bootstrap ✿ Technical Writing ✿
+					Documentation ✿ Figma ✿ Git ✿
+				</div>
+			</div>
+
+			<!-- SERVICES -->
+			<section id="services" class="services">
+				<div class="wrap">
+					<div class="head">
+						<h2>What I do, <em>and do well.</em></h2>
+						<p>
+							My science background taught me to think analytically. Tech taught
+							me to build with it, and writing lets me explain it.
+						</p>
+					</div>
+					<div class="svc-grid">
+						<article class="svc">
+							<div class="icon" aria-hidden="true">🎀</div>
+							<h3>Frontend development</h3>
+							<p>
+								Responsive, mobile-first interfaces, from design handoff to
+								deployment, built to look good on every screen.
+							</p>
+							<ul class="tags">
+								<li>HTML & CSS</li>
+								<li>JavaScript</li>
+								<li>React</li>
+								<li>Tailwind</li>
+							</ul>
+						</article>
+						<article class="svc">
+							<div class="icon" aria-hidden="true">✍️</div>
+							<h3>Technical writing</h3>
+							<p>
+								User guides, READMEs, setup docs and comparisons that turn raw
+								build notes into clear, step-by-step references.
+							</p>
+							<ul class="tags">
+								<li>User guides</li>
+								<li>API docs</li>
+								<li>READMEs</li>
+								<li>SOPs</li>
+							</ul>
+						</article>
+						<article class="svc">
+							<div class="icon" aria-hidden="true">🌷</div>
+							<h3>AI-first workflows</h3>
+							<p>
+								I use AI tools to find content gaps and speed up documentation,
+								while keeping the accuracy and tone consistent.
+							</p>
+							<ul class="tags">
+								<li>Prompting</li>
+								<li>Claude</li>
+								<li>Grammarly</li>
+								<li>Content audits</li>
+							</ul>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- WORK -->
+			<section id="work">
+				<div class="wrap">
+					<div class="head">
+						<h2>Projects I’m <em>proud of.</em></h2>
+						<p>
+							A mix of products I built with teams and things I made on my own.
+							Each one links to GitHub.
+						</p>
+					</div>
+					<div class="work-grid">
+						<a
+							class="card feature"
+							href="https://github.com/f-lajoc"
+							target="_blank"
+							rel="noopener">
+							<div>
+								<span class="kind"
+									>Team project · Frontend + documentation</span
+								>
+								<h3>EventEase</h3>
+								<p>
+									A multi-role platform (vendor, planner and admin) that
+									connects event planners with vendors. I built responsive UI
+									components from design handoff through deployment and wrote
+									the full project README with features, tech stack and setup
+									instructions.
+								</p>
+								<ul class="tags left">
+									<li>Responsive UI</li>
+									<li>Git & PRs</li>
+									<li>Documentation</li>
+								</ul>
+							</div>
+							<span class="go">View on GitHub ↗</span>
+						</a>
+						<a
+							class="card c2"
+							href="https://github.com/f-lajoc"
+							target="_blank"
+							rel="noopener">
+							<div>
+								<span class="kind">Technical writing</span>
+								<h3>Django Project Setup Guide</h3>
+								<p>
+									A beginner-friendly guide covering installation, app
+									structure, views, templates, authentication and deployment to
+									Render.
+								</p>
+							</div>
+							<span class="go">View on GitHub ↗</span>
+						</a>
+						<a
+							class="card c3"
+							href="https://github.com/f-lajoc"
+							target="_blank"
+							rel="noopener">
+							<div>
+								<span class="kind">JavaScript</span>
+								<h3>Password Generator</h3>
+								<p>
+									A web app that creates secure, random passwords with your
+									chosen length and character rules. Built with vanilla
+									JavaScript.
+								</p>
+							</div>
+							<span class="go">View on GitHub ↗</span>
+						</a>
+						<a
+							class="card c4"
+							href="https://github.com/f-lajoc"
+							target="_blank"
+							rel="noopener">
+							<div>
+								<span class="kind">HTML · CSS · Bootstrap · JavaScript</span>
+								<h3>Cocokitchen</h3>
+								<p>
+									A multi-page food-ordering site with a JavaScript-powered
+									6-digit OTP verification flow.
+								</p>
+							</div>
+							<span class="go">View on GitHub ↗</span>
+						</a>
+						<a
+							class="card c5"
+							href="https://github.com/f-lajoc"
+							target="_blank"
+							rel="noopener">
+							<div>
+								<span class="kind">HTML · CSS · Bootstrap</span>
+								<h3>Myra Landing Page</h3>
+								<p>
+									A fully responsive marketing page with custom CSS animations
+									and smooth scroll interactions.
+								</p>
+							</div>
+							<span class="go">View on GitHub ↗</span>
+						</a>
+					</div>
+
+					<h2 class="sub">Things I’ve <em>published.</em></h2>
+					<div class="work-grid">
+						<a
+							class="card c2"
+							href="https://medium.com/@lajoc"
+							target="_blank"
+							rel="noopener">
+							<div>
+								<span class="kind"
+									>Artificial Intelligence in Plain English</span
+								>
+								<h3>Artificial Intelligence (AI) in Web Development</h3>
+								<p>
+									A deep dive into how AI tools are changing modern web
+									workflows, covering efficiency, automation and scaling
+									documentation.
+								</p>
+							</div>
+							<span class="go">Read on Medium ↗</span>
+						</a>
+						<a
+							class="card c4"
+							href="https://medium.com/@lajoc"
+							target="_blank"
+							rel="noopener">
+							<div>
+								<span class="kind">Medium</span>
+								<h3>CSS Frameworks: Tailwind CSS vs. Bootstrap</h3>
+								<p>
+									A comparison of two popular frameworks that explains the
+									trade-offs in plain language, with no jargon.
+								</p>
+							</div>
+							<span class="go">Read on Medium ↗</span>
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- EXPERIENCE -->
+			<section id="experience" class="experience">
+				<div class="wrap">
+					<div class="head">
+						<h2>Where I’ve <em>worked.</em></h2>
+					</div>
+					<ol class="timeline">
+						<li>
+							<span class="when">Oct 2025 – Present</span>
+							<h3>Technical Writer & Web Developer</h3>
+							<p class="where">Freelance · Remote</p>
+							<ul>
+								<li>
+									Wrote end-to-end setup and workflow documentation for
+									Python/Django apps, covering environment setup, architecture,
+									authentication and deployment.
+								</li>
+								<li>
+									Maintained and expanded project READMEs, including EventEase,
+									to a portfolio standard.
+								</li>
+								<li>
+									Ran site audits and gave improvement recommendations for
+									small-business client websites.
+								</li>
+								<li>
+									Used AI-first workflows to speed up documentation while
+									keeping accuracy and tone consistent.
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="when">Apr 2025 – Sep 2025</span>
+							<h3>Frontend Web Developer Intern</h3>
+							<p class="where">GirlLEAD Talent Accelerator · Remote</p>
+							<ul>
+								<li>
+									Co-built EventEase, contributing responsive UI components from
+									design handoff to deployment.
+								</li>
+								<li>
+									Introduced and documented layout best practices for fluid,
+									mobile-first design that other interns adopted.
+								</li>
+								<li>
+									Worked with Git in a remote team, managing branches, pull
+									requests and code reviews.
+								</li>
+								<li>
+									Started building in React, applying components and hooks
+									alongside live project work.
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="when">Sep 2023 – Jan 2024</span>
+							<h3>Intermediate Frontend Web Developer Intern</h3>
+							<p class="where">instinctHub · Remote</p>
+							<ul>
+								<li>
+									Led frontend work on Artic Online Fashion Store, building the
+									product listing, filtering and navigation.
+								</li>
+								<li>
+									Shipped interactive features in modern JavaScript (ES6+)
+									across multiple pages.
+								</li>
+								<li>
+									Debugged layouts so they look the same on Chrome, Firefox and
+									mobile Safari.
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="when">Sep 2023 – Oct 2023</span>
+							<h3>Technical Writer Intern</h3>
+							<p class="where">Microsoft Learn Student Ambassador · Remote</p>
+							<ul>
+								<li>
+									Wrote a comparative guide on Bootstrap vs. Tailwind CSS.
+								</li>
+								<li>
+									Produced beginner-friendly docs on CLI fundamentals and AI in
+									web development.
+								</li>
+								<li>
+									Took part in peer review to keep content accurate and on
+									style.
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="when">Jun 2022 – Sep 2022</span>
+							<h3>Frontend Developer Intern</h3>
+							<p class="where">Techathon · Remote</p>
+							<ul>
+								<li>
+									Designed and built the Gallery page for the Crowdheart Charity
+									Foundation website.
+								</li>
+								<li>
+									Worked in an agile team, joining standups and delivering
+									within sprint deadlines.
+								</li>
+							</ul>
+						</li>
+					</ol>
+				</div>
+			</section>
+
+			<!-- SKILLS -->
+			<section id="skills">
+				<div class="wrap">
+					<div class="head">
+						<h2>Skills & <em>education.</em></h2>
+					</div>
+					<div class="skills-grid">
+						<div>
+							<h3>Frontend</h3>
+							<ul class="tags left">
+								<li style="background: var(--blush)">HTML5</li>
+								<li style="background: var(--blush)">CSS3</li>
+								<li style="background: var(--blush)">JavaScript (ES6+)</li>
+								<li style="background: var(--blush)">React (in progress)</li>
+								<li style="background: var(--blush)">Bootstrap</li>
+								<li style="background: var(--blush)">Tailwind CSS</li>
+								<li style="background: var(--blush)">
+									Python/Django (working knowledge)
+								</li>
+							</ul>
+						</div>
+						<div>
+							<h3>Tools & workflow</h3>
+							<ul class="tags left">
+								<li style="background: var(--lilac)">Git & GitHub</li>
+								<li style="background: var(--lilac)">Figma</li>
+								<li style="background: var(--lilac)">Responsive design</li>
+								<li style="background: var(--lilac)">Mobile-first design</li>
+							</ul>
+						</div>
+						<div>
+							<h3>Technical writing</h3>
+							<ul class="tags left">
+								<li style="background: var(--butter)">
+									Software documentation
+								</li>
+								<li style="background: var(--butter)">User guides</li>
+								<li style="background: var(--butter)">API documentation</li>
+								<li style="background: var(--butter)">SOP documentation</li>
+								<li style="background: var(--butter)">Comparative analysis</li>
+							</ul>
+						</div>
+						<div>
+							<h3>AI, data & content</h3>
+							<ul class="tags left">
+								<li style="background: var(--blush)">Prompt engineering</li>
+								<li style="background: var(--blush)">Claude</li>
+								<li style="background: var(--blush)">Grammarly</li>
+								<li style="background: var(--blush)">Microsoft Excel</li>
+								<li style="background: var(--blush)">EViews</li>
+								<li style="background: var(--blush)">Data cleaning</li>
+							</ul>
+						</div>
+					</div>
+					<div class="edu">
+						<h3>B.Sc. Zoology</h3>
+						<p>
+							Obafemi Awolowo University, Ile-Ife · 2018 – 2024. My research and
+							analytical training feeds directly into how I write documentation
+							and solve problems in code.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- CONTACT -->
+			<section id="contact" class="contact">
+				<div class="wrap">
+					<div class="contact-box">
+						<h2>Have a project in mind? <em>Let’s make it lovely.</em></h2>
+						<p>
+							I’m open to remote frontend and technical writing roles, and to
+							freelance projects.
+						</p>
+						<a class="mail" href="mailto:bolajifisayo80@gmail.com"
+							>bolajifisayo80@gmail.com</a
+						>
+						<div class="links">
+							<a
+								class="pill"
+								href="https://github.com/f-lajoc"
+								target="_blank"
+								rel="noopener"
+								>GitHub</a
+							>
+							<a
+								class="pill ghost"
+								href="https://medium.com/@lajoc"
+								target="_blank"
+								rel="noopener"
+								>Medium</a
+							>
+							<!-- Replace the link below with your real LinkedIn URL -->
+							<a
+								class="pill ghost"
+								href="https://www.linkedin.com/in/your-linkedin-handle"
+								target="_blank"
+								rel="noopener"
+								>LinkedIn</a
+							>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<div class="wrap">
+				© 2026 Bolaji Funmilola · Ibadan, Nigeria · Working remotely
+			</div>
+		</footer>
+
+		<script>
+			const btn = document.querySelector(".menu-btn");
+			const menu = document.getElementById("menu");
+			btn.addEventListener("click", () => {
+				const open = menu.classList.toggle("open");
+				btn.setAttribute("aria-expanded", open);
+			});
+			menu.querySelectorAll("a").forEach((a) =>
+				a.addEventListener("click", () => {
+					menu.classList.remove("open");
+					btn.setAttribute("aria-expanded", false);
+				}),
+			);
+		</script>
+	</body>
+</html>
