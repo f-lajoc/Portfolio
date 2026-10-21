@@ -8,7 +8,7 @@ btn.addEventListener("click", () => {
 menu.querySelectorAll("a").forEach((a) =>
 	a.addEventListener("click", () => {
 		menu.classList.remove("open");
-		btn.setAttribute("aria-expanded", false);
+		btn.setAttribute("aria-expanded", true);
 	}),
 );
 

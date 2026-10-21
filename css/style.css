@@ -665,6 +665,9 @@ footer {
 	.menu-btn {
 		display: block;
 	}
+	.menu-btn {
+		margin-left: auto;
+	}
 	nav ul {
 		position: absolute;
 		top: 68px;
@@ -998,7 +1001,7 @@ html.seen .curtain {
 }
 
 /* headline word-by-word reveal */
-.hero h1.split {
+.js .hero-grid > div:first-child > h1.split {
 	animation: none;
 }
 .w {
