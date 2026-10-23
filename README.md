@@ -31,7 +31,7 @@ portfolio/
 ├── css/
 │   └── style.css     # Design, layout and animations
 ├── js/
-│   └── jscript.js    # Scroll reveal, stats counter, progress bar and effects
+│   └── script.js    # Scroll reveal, stats counter, progress bar and effects
 ├── images/
 │   └── photo.jpg     # Profile photo (3:4 portrait)
 └── README.md
@@ -71,7 +71,7 @@ It also deploys without changes to Netlify or Vercel.
 
 ### Turning off effects
 
-Each effect is a separate block in `js/jscript.js` and can be deleted without affecting the rest of the site:
+Each effect is a separate block in `js/script.js` and can be deleted without affecting the rest of the site:
 
 - **Cursor sparkle trail:** the "Cursor sparkle trail" block
 - **Floating shapes:** the "Floating blobs" block
