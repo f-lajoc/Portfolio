@@ -88,5 +88,5 @@ Works in current versions of Chrome, Edge, Firefox and Safari, on desktop and mo
 
 - GitHub: [@f-lajoc](https://github.com/f-lajoc)
 - Medium: [@lajoc\_](https://medium.com/@lajoc_)
-- LinkedIn: [bolajifunmilola](https://www.linkedin.com/in/bolajifunmilola)
+- LinkedIn: [bolajifunmilola](https://www.linkedin.com/in/funmilola-b-b4044b13b)
 - Email: bolajifisayo80@gmail.com
