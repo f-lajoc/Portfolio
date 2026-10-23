@@ -142,6 +142,27 @@ nav .pill {
 	font-weight: 600;
 	color: var(--plum);
 	cursor: pointer;
+	user-select: none;
+}
+.menu-check {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+	width: 1px;
+	height: 1px;
+}
+.menu-btn .t-close {
+	display: none;
+}
+#menu-toggle:checked + .menu-btn .t-open {
+	display: none;
+}
+#menu-toggle:checked + .menu-btn .t-close {
+	display: inline;
+}
+#menu-toggle:focus-visible + .menu-btn {
+	outline: 3px solid var(--orchid);
+	outline-offset: 3px;
 }
 
 /* Hero */
@@ -278,6 +299,7 @@ nav .pill {
 	font-size: 0.95rem;
 }
 .stat b {
+	font-variant-numeric: tabular-nums;
 	font-family: var(--serif);
 	font-size: 1.4rem;
 	color: var(--orchid);
@@ -664,24 +686,25 @@ footer {
 	}
 	.menu-btn {
 		display: block;
-	}
-	.menu-btn {
 		margin-left: auto;
 	}
 	nav ul {
 		position: absolute;
 		top: 68px;
+		/* width: 150px; reduce the menu	width */
 		left: 0;
-		right: 0;
+		right: 0; /* menu displays on right */
 		background: var(--petal);
+		opacity: 0.98;
 		flex-direction: column;
 		padding: 1.4rem 0 1.8rem;
 		gap: 1.2rem;
 		border-bottom: 1px solid var(--blush);
 		display: none;
 	}
-	nav ul.open {
+	#menu-toggle:checked ~ nav ul {
 		display: flex;
+		animation: menuIn 0.25s ease;
 	}
 	.portrait {
 		order: -1;
@@ -784,6 +807,16 @@ nav a.active:not(.pill) {
 	transform: translateY(-4px);
 }
 
+@keyframes menuIn {
+	from {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
 @keyframes rise {
 	from {
 		opacity: 0;

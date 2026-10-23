@@ -1,16 +1,20 @@
-// ===== Mobile menu =====
-const btn = document.querySelector(".menu-btn");
-const menu = document.getElementById("menu");
-btn.addEventListener("click", () => {
-	const open = menu.classList.toggle("open");
-	btn.setAttribute("aria-expanded", open);
-});
-menu.querySelectorAll("a").forEach((a) =>
-	a.addEventListener("click", () => {
-		menu.classList.remove("open");
-		btn.setAttribute("aria-expanded", true);
-	}),
-);
+// ===== Mobile menu (opens with a CSS checkbox; JS only adds extras) =====
+const menuToggle = document.getElementById("menu-toggle");
+if (menuToggle) {
+	const closeMenu = () => {
+		menuToggle.checked = false;
+	};
+	document
+		.querySelectorAll("#menu a")
+		.forEach((a) => a.addEventListener("click", closeMenu));
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") closeMenu();
+	});
+	document.addEventListener("click", (e) => {
+		if (!e.target.closest("header")) closeMenu();
+	});
+	window.matchMedia("(min-width: 861px)").addEventListener("change", closeMenu);
+}
 
 const reduceMotion = window.matchMedia(
 	"(prefers-reduced-motion: reduce)",
@@ -47,23 +51,76 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
 	revealTargets.forEach((el) => revealObserver.observe(el));
 }
 
-// ===== Count-up stats =====
-document.querySelectorAll(".stat b").forEach((el) => {
-	const text = el.textContent.trim();
-	const target = parseInt(text, 10);
-	const suffix = text.replace(/[0-9]/g, "");
-	if (reduceMotion || isNaN(target)) return;
-	const duration = 1400;
-	const start = performance.now() + introMs + 300;
-	el.textContent = "0" + suffix;
-	function tick(now) {
-		const t = Math.min(Math.max((now - start) / duration, 0), 1);
-		const eased = 1 - Math.pow(1 - t, 3);
-		el.textContent = Math.round(target * eased) + suffix;
-		if (t < 1) requestAnimationFrame(tick);
+// ===== Count-up stats (starts when the stats scroll into view) =====
+(function () {
+	const box = document.querySelector(".stats");
+	if (!box) return;
+
+	const items = Array.from(box.querySelectorAll("b"))
+		.map((el) => {
+			const text = el.textContent.trim();
+			return {
+				el,
+				text,
+				target: parseInt(text, 10),
+				suffix: text.replace(/[0-9]/g, ""),
+			};
+		})
+		.filter((s) => !isNaN(s.target));
+	if (!items.length) return;
+
+	// start every number at 0
+	items.forEach((s) => {
+		s.el.textContent = "0" + s.suffix;
+	});
+
+	const duration = reduceMotion ? 900 : 2000;
+	let started = false;
+
+	function run() {
+		let begin = null;
+		function tick(now) {
+			// take the start time from the first animation frame itself
+			if (begin === null) begin = now;
+			const t = Math.min(Math.max((now - begin) / duration, 0), 1);
+			const eased = 1 - Math.pow(1 - t, 3);
+			items.forEach((s) => {
+				s.el.textContent = Math.round(s.target * eased) + s.suffix;
+			});
+			if (t < 1) {
+				requestAnimationFrame(tick);
+			} else {
+				items.forEach((s) => {
+					s.el.textContent = s.text;
+				});
+			}
+		}
+		requestAnimationFrame(tick);
 	}
-	requestAnimationFrame(tick);
-});
+
+	function start() {
+		if (started) return;
+		started = true;
+		// if the stats are visible on first load, wait for the intro curtain and the pills fading in
+		const wait = Math.max(0, introMs + 900 - performance.now());
+		setTimeout(run, wait);
+	}
+
+	if ("IntersectionObserver" in window) {
+		const statsObserver = new IntersectionObserver(
+			(entries) => {
+				if (entries.some((e) => e.isIntersecting)) {
+					statsObserver.disconnect();
+					start();
+				}
+			},
+			{ threshold: 0.6 },
+		);
+		statsObserver.observe(box);
+	} else {
+		start();
+	}
+})();
 
 // ===== Scroll progress bar + header shadow =====
 const progress = document.querySelector(".progress");
