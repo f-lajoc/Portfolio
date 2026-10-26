@@ -355,11 +355,11 @@ section {
 	border: 1.5px solid var(--blush);
 	text-align: center;
 }
-.svc:nth-child(2) {
+.svc:nth-child(3n + 2) {
 	background: var(--lilac);
 	border-color: var(--lilac);
 }
-.svc:nth-child(3) {
+.svc:nth-child(3n + 3) {
 	background: var(--butter);
 	border-color: var(--butter);
 }
@@ -628,6 +628,31 @@ section {
 	font-size: 0.92rem;
 	opacity: 0.85;
 }
+.edu .small {
+	margin-top: 0.8rem;
+	font-size: 0.92rem;
+	opacity: 0.85;
+}
+.training.research .edu-grid {
+	margin-top: 0;
+}
+.research-grid {
+	grid-template-columns: repeat(3, 1fr);
+}
+.research-grid .edu:nth-child(2) {
+	background: var(--lilac);
+	border-color: var(--lilac);
+}
+.research-grid .edu:nth-child(3) {
+	background: var(--butter);
+	border-color: var(--butter);
+}
+.research-grid .edu h3 {
+	margin-bottom: 0.6rem;
+}
+.research-grid .edu p {
+	font-size: 0.95rem;
+}
 .edu .verify {
 	display: inline-block;
 	margin-top: 1rem;
@@ -691,11 +716,9 @@ footer {
 	nav ul {
 		position: absolute;
 		top: 68px;
-		/* width: 150px; reduce the menu	width */
 		left: 0;
-		right: 0; /* menu displays on right */
+		right: 0;
 		background: var(--petal);
-		opacity: 0.98;
 		flex-direction: column;
 		padding: 1.4rem 0 1.8rem;
 		gap: 1.2rem;
